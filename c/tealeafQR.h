@@ -4,27 +4,13 @@
 #include <stdlib.h>
 
 
-// test whether an amlpitude should be set to zero
-bool masked(int32_t row,
-            int32_t column,
-            int32_t num_rows,
-            int32_t num_columns,
-            int32_t row_cutoff,
-            int32_t column_cutoff);
+
+int32_t conjugateIndex (int32_t index,int32_t num_rows, int32_t num_columns);
 
 
-// if an index is not masked, return the corresponding index in the amplitude array
-// negative index indicates a complex conjugate
-int32_t amplitudeIndex( int32_t row,
-                        int32_t column,
-                        int32_t num_rows,
-                        int32_t num_columns,
-                        int32_t row_cutoff,
-                        int32_t column_cutoff);
-
-
-// amplitudes should be a pointer to an array double[2 * row_cutoff * column_cutoff][2]
-uint8_t *generateTeaLeafQR( double *amplitudes,
+// amplitudes should be a pointer to an array of length
+// row_cutoff * column_cutoff + (row_cutoff - 1) * (column_cutoff - 1) 
+uint8_t *generateTeaLeafQR( fftw_complex *amplitudes,
                             int32_t num_rows,
                             int32_t num_columns,
                             int32_t row_cutoff,
