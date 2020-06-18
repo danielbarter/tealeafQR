@@ -16,12 +16,12 @@ testAmplitudes = S.fromList [
    0.0,0.0,
    -3.50749, 4.11681,
    3.96204, 0.902212,
-   1.76121, -0.298353,
-   100, -3.03788,
+   1.76121, -2.298353,
+   5, -3.03788,
    2.47675, -15.67449,
-   10.05481, -4.58991,
+   -5.05481, -4.58991,
    0.280289, -3.51709,
-   -1.95524, 4.91539,
+   1.95524, 4.91539,
    0.0470628, -20.87474,
    3.54291, -0.981779,
    -0.247467, 0.443373,
@@ -38,10 +38,10 @@ testImage :: IO (JP.Image Word8)
 testImage = do
   SM.MVector length amplitudeForeignPtr <-  S.thaw testAmplitudes
   imagePtr <- withForeignPtr amplitudeForeignPtr
-    (\p -> generateTeaLeafQRC p 100 100 3 3)
+    (\p -> generateTeaLeafQRC p 400 400 3 3)
   imageForeignPtr <- newForeignPtr freeTeaLeafQRC imagePtr
-  imageVector <- S.freeze $ S.MVector (100 * 100) imageForeignPtr
-  return $ JP.Image 100 100 imageVector
+  imageVector <- S.freeze $ S.MVector (400 * 400) imageForeignPtr
+  return $ JP.Image 400 400 imageVector
 
 
 main = do
