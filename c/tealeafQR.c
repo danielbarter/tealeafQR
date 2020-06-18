@@ -77,7 +77,7 @@ uint8_t *generateTeaLeafQR( fftw_complex *amplitudes,
 
   for (i = 0; i < array_size; ++i)
     {
-      if ( out[i][0] > array_size / 2 )
+      if ( out[i][0] > 0 )
         {
           image[i] = 255;
         } else
@@ -89,7 +89,13 @@ uint8_t *generateTeaLeafQR( fftw_complex *amplitudes,
   fftw_destroy_plan(plan);
   fftw_free(in);
   fftw_free(out);
+  free(fundamental_domain);
 
   return image;
 
+}
+
+void freeTeaLeafQR(bool *ptr)
+{
+  free(ptr);
 }

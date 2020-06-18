@@ -21,6 +21,6 @@ int32_t main(int32_t argc, char **argv)
   };
 
 
-  generateTeaLeafQR( amplitude,100,100,3,3);
+  generateTeaLeafQR( amplitude,200,100,3,3);
   return 0;
 }
